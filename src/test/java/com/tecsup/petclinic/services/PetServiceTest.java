@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,10 +27,9 @@ import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
 
 @SpringBootTest
+@Slf4j
 public class PetServiceTest {
-
-	private static final Logger logger = LoggerFactory.getLogger(PetServiceTest.class);
-
+	
 	@Autowired
 	private PetService petService;
 
@@ -49,7 +49,7 @@ public class PetServiceTest {
 			fail(e.getMessage());
 		}
 		
-		logger.info("" + pet);
+		 log.info("" + pet);
 		assertThat(pet.getName(), is(NAME));
 
 	}
@@ -114,7 +114,7 @@ public class PetServiceTest {
 		
 		Pet petCreated = petService.create(pet);
 		
-		logger.info("PET CREATED :" + petCreated);
+		 log.info("PET CREATED :" + petCreated);
 
 		//          ACTUAL                 , EXPECTED 
 		assertThat(petCreated.getId()      , notNullValue());
@@ -143,9 +143,9 @@ public class PetServiceTest {
 		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
 
 		// Create record
-		logger.info(">" + pet);
+		 log.info(">" + pet);
 		Pet petCreated = petService.create(pet);
-		logger.info(">>" + petCreated);
+		 log.info(">>" + petCreated);
 
 		create_id = petCreated.getId();
 
@@ -156,7 +156,7 @@ public class PetServiceTest {
 
 		// Execute update
 		Pet upgradePet = petService.update(petCreated);
-		logger.info(">>>>" + upgradePet);
+		 log.info(">>>>" + upgradePet);
 
 		//        ACTUAL       EXPECTED
 		assertThat(create_id ,notNullValue());
@@ -178,7 +178,7 @@ public class PetServiceTest {
 
 		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
 		pet = petService.create(pet);
-		logger.info("" + pet);
+		 log.info("" + pet);
 
 		try {
 			petService.delete(pet.getId());

@@ -3,6 +3,7 @@ package com.tecsup.petclinic.services;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,8 @@ import com.tecsup.petclinic.repositories.PetRepository;
  *
  */
 @Service
+@Slf4j
 public class PetServiceImpl implements PetService {
-
-	private static final Logger logger = LoggerFactory.getLogger(PetServiceImpl.class);
 
 	@Autowired
 	PetRepository petRepository;
@@ -85,7 +85,7 @@ public class PetServiceImpl implements PetService {
 
 		List<Pet> pets = petRepository.findByName(name);
 
-		pets.stream().forEach(pet -> logger.info("" + pet));
+		pets.stream().forEach(pet -> log.info("" + pet));
 
 		return pets;
 	}
@@ -100,7 +100,7 @@ public class PetServiceImpl implements PetService {
 
 		List<Pet> pets = petRepository.findByTypeId(typeId);
 
-		pets.stream().forEach(pet -> logger.info("" + pet));
+		pets.stream().forEach(pet -> log.info("" + pet));
 
 		return pets;
 	}
@@ -115,21 +115,19 @@ public class PetServiceImpl implements PetService {
 
 		List<Pet> pets = petRepository.findByOwnerId(ownerId);
 
-		pets.stream().forEach(pet -> logger.info("" + pet));
+		pets.stream().forEach(pet -> log.info("" + pet));
 
 		return pets;
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	@Override
-	public Iterable<Pet> findAll() {
-		
-		// TODO Auto-generated 
+	public List<Pet> findAll() {
+		//
 		return petRepository.findAll();
-	
-	}
 
+	}
 }
