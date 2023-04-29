@@ -1,4 +1,4 @@
-# Spring Boot : Application PetClinic :
+# Spring Boot : Application PetClinic
 
 ## Features  
 
