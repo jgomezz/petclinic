@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.controllers;
+package com.tecsup.petclinic.webs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,6 +35,23 @@ public class PetController {
 	// @JsonIgnore
 	@GetMapping("/pets")
 	public Iterable<Pet> getPets() {
+		
+		Iterable<Pet> pets = null; 
+		
+		boolean flag = true;
+		
+		/**
+		 *  Condicional del proceso
+		 * 
+		 */
+		if ( flag ) {
+			
+			pets = service.findAll();
+			
+		}
+				
+		System.out.println("Fin de proceso");
+		
 		//
 		return service.findAll();
 	}
