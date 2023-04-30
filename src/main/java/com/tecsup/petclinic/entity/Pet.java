@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.entities;
+package com.tecsup.petclinic.entity;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;

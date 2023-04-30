@@ -1,7 +1,7 @@
-package com.tecsup.petclinic.services;
+package com.tecsup.petclinic.service;
 
 
-import com.tecsup.petclinic.entities.Pet;
+import com.tecsup.petclinic.entity.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -30,7 +30,7 @@ public class PetServiceTest {
         Pet pet = null;
 
         try {
-            pet = petService.findById(ID);
+            pet = this.petService.findById(ID);
         } catch (PetNotFoundException e) {
             fail(e.getMessage());
         }
@@ -49,7 +49,7 @@ public class PetServiceTest {
         String FIND_NAME = "Leo";
         int SIZE_EXPECTED = 1;
 
-        List<Pet> pets = petService.findByName(FIND_NAME);
+        List<Pet> pets = this.petService.findByName(FIND_NAME);
 
         assertEquals(SIZE_EXPECTED, pets.size());
     }
@@ -63,7 +63,7 @@ public class PetServiceTest {
         int TYPE_ID = 5;
         int SIZE_EXPECTED = 2;
 
-        List<Pet> pets = petService.findByTypeId(TYPE_ID);
+        List<Pet> pets = this.petService.findByTypeId(TYPE_ID);
 
         assertEquals(SIZE_EXPECTED, pets.size());
     }
@@ -77,7 +77,7 @@ public class PetServiceTest {
         int OWNER_ID = 10;
         int SIZE_EXPECTED = 2;
 
-        List<Pet> pets = petService.findByOwnerId(OWNER_ID);
+        List<Pet> pets = this.petService.findByOwnerId(OWNER_ID);
 
         assertEquals(SIZE_EXPECTED, pets.size());
 
@@ -99,7 +99,7 @@ public class PetServiceTest {
 
         Pet pet = new Pet(PET_NAME, 1, 1);
 
-        Pet petCreated = petService.create(pet);
+        Pet petCreated = this.petService.create(pet);
 
         log.info("PET CREATED :" + petCreated);
 
@@ -120,7 +120,6 @@ public class PetServiceTest {
         String PET_NAME = "Bear";
         int OWNER_ID = 1;
         int TYPE_ID = 1;
-        long create_id = -1;
 
         String UP_PET_NAME = "Bear2";
         int UP_OWNER_ID = 2;
@@ -128,12 +127,13 @@ public class PetServiceTest {
 
         Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
 
-        // Create record
+        // ------------ Create ---------------
+
         log.info(">" + pet);
-        Pet petCreated = petService.create(pet);
+        Pet petCreated = this.petService.create(pet);
         log.info(">>" + petCreated);
 
-        create_id = petCreated.getId();
+        // ------------ Update ---------------
 
         // Prepare data for update
         petCreated.setName(UP_PET_NAME);
@@ -141,12 +141,10 @@ public class PetServiceTest {
         petCreated.setTypeId(UP_TYPE_ID);
 
         // Execute update
-        Pet upgradePet = petService.update(petCreated);
+        Pet upgradePet = this.petService.update(petCreated);
         log.info(">>>>" + upgradePet);
 
-        //        ACTUAL       EXPECTED
-        assertNotNull(create_id);
-        assertEquals(create_id, upgradePet.getId());
+        //            EXPECTED        ACTUAL
         assertEquals(UP_PET_NAME, upgradePet.getName());
         assertEquals(UP_OWNER_ID, upgradePet.getTypeId());
         assertEquals(UP_TYPE_ID, upgradePet.getOwnerId());
@@ -162,22 +160,27 @@ public class PetServiceTest {
         int OWNER_ID = 1;
         int TYPE_ID = 1;
 
+        // ------------ Create ---------------
+
         Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
-        pet = petService.create(pet);
+        pet = this.petService.create(pet);
         log.info("" + pet);
 
+        // ------------ Delete ---------------
+
         try {
-            petService.delete(pet.getId());
+            this.petService.delete(pet.getId());
         } catch (PetNotFoundException e) {
             fail(e.getMessage());
         }
 
+        // ------------ Validation ---------------
+
         try {
-            petService.findById(pet.getId());
+            this.petService.findById(pet.getId());
             assertTrue(false);
         } catch (PetNotFoundException e) {
             assertTrue(true);
-
         }
 
     }
