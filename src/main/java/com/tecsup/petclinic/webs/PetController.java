@@ -49,12 +49,12 @@ public class PetController {
 	public ResponseEntity<List<PetTO>> findAllPets() {
 
 		List<Pet> pets = (List<Pet>) petService.findAll();
-		log.info("pets: " + pets);
-		pets.forEach(item -> log.info("Pet >>  {} ", item));
+		//log.info("pets: " + pets);
+		//pets.forEach(item -> log.info("Pet >>  {} ", item));
 
 		List<PetTO> petsTO = this.mapper.toPetTOList(pets);
-		log.info("petsTO: " + petsTO);
-		petsTO.forEach(item -> log.info("PetTO >>  {} ", item));
+		//log.info("petsTO: " + petsTO);
+		//petsTO.forEach(item -> log.info("PetTO >>  {} ", item));
 
 		return ResponseEntity.ok(petsTO);
 
@@ -87,7 +87,7 @@ public class PetController {
 	 * @throws PetNotFoundException
 	 */
 	@GetMapping(value = "/pets/{id}")
-	ResponseEntity<PetTO> findById(@PathVariable Long id) {
+	ResponseEntity<PetTO> findById(@PathVariable Integer id) {
 
 		PetTO petTO = null;
 
@@ -110,7 +110,7 @@ public class PetController {
 	 * @return
 	 */
 	@PutMapping(value = "/pets/{id}")
-	ResponseEntity<PetTO>  update(@RequestBody PetTO petTO, @PathVariable Long id) {
+	ResponseEntity<PetTO>  update(@RequestBody PetTO petTO, @PathVariable Integer id) {
 
 		PetTO updatePetTO = null;
 
@@ -139,7 +139,7 @@ public class PetController {
 	 * @param id
 	 */
 	@DeleteMapping(value = "/pets/{id}")
-	ResponseEntity<String> delete(@PathVariable Long id) {
+	ResponseEntity<String> delete(@PathVariable Integer id) {
 
 		try {
 			petService.delete(id);

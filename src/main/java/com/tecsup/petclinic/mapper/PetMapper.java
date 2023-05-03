@@ -50,4 +50,7 @@ public interface PetMapper {
 
 	List<PetTO> toPetTOList(List<Pet> petList);
 
+	List<Pet> toPetList(List<PetTO> petTOList);
+
+
 }

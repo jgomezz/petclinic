@@ -25,7 +25,7 @@ public class PetServiceTest {
     @Test
     public void testFindPetById() {
 
-        long ID = 1;
+        Integer ID = 1;
         String NAME = "Leo";
         Pet pet = null;
 
