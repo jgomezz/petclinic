@@ -1,4 +1,4 @@
-package com.tecsup.petclinic.controllers;
+package com.tecsup.petclinic.webs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
