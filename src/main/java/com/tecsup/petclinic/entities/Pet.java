@@ -1,16 +1,10 @@
 package com.tecsup.petclinic.entities;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * 
@@ -18,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  *
  */
 @Entity(name = "pets")
+@Data
 public class Pet {
 
 	@Id
@@ -28,10 +23,9 @@ public class Pet {
 	private int typeId;
 	@Column(name = "owner_id")
 	private int ownerId;
-	
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "birth_date")
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@JsonFormat(pattern = "yyyy-MM-dd",  timezone = "GMT+8")
 	private Date birthDate;
 	
 	public Pet() {
@@ -54,53 +48,4 @@ public class Pet {
 		this.birthDate = birth_date;
 
 	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(int type_id) {
-		this.typeId = type_id;
-	}
-
-	public int getOwnerId() {
-		return ownerId;
-	}
-
-	public void setOwnerId(int owner_id) {
-		this.ownerId = owner_id;
-	}
-
-	@Override
-	public String toString() {
-		return "Pet [id=" + id + ", name=" + name + ", typeId=" + typeId + ", ownerId=" + ownerId + ", birthDate="
-				+ birthDate + "]";
-	}
-
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-
-
 }

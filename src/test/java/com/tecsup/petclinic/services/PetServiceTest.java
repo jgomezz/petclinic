@@ -1,187 +1,187 @@
 package com.tecsup.petclinic.services;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.fail;
-
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Slf4j
 public class PetServiceTest {
 
-	private static final Logger logger = LoggerFactory.getLogger(PetServiceTest.class);
+    @Autowired
+    private PetService petService;
 
-	@Autowired
-	private PetService petService;
+    /**
+     *
+     */
+    @Test
+    public void testFindPetById() {
 
-	/**
-	 * 
-	 */
-	@Test
-	public void testFindPetById() {
+        long ID = 1;
+        String NAME = "Leo";
+        Pet pet = null;
 
-		long ID = 1;
-		String NAME = "Leo";
-		Pet pet = null;
-		
-		try {
-			pet = petService.findById(ID);
-		} catch (PetNotFoundException e) {
-			fail(e.getMessage());
-		}
-		
-		logger.info("" + pet);
-		assertThat(pet.getName(), is(NAME));
+        try {
+            pet = this.petService.findById(ID);
+        } catch (PetNotFoundException e) {
+            fail(e.getMessage());
+        }
 
-	}
+        log.info("" + pet);
+        assertEquals(NAME, pet.getName());
 
-	/**
-	 * 
-	 */
-	@Test
-	public void testFindPetByName() {
+    }
 
-		String FIND_NAME = "Leo";
-		int SIZE_EXPECTED = 1;
+    /**
+     *
+     */
+    @Test
+    public void testFindPetByName() {
 
-		List<Pet> pets = petService.findByName(FIND_NAME);
+        String FIND_NAME = "Leo";
+        int SIZE_EXPECTED = 1;
 
-		assertThat(pets.size(), is(SIZE_EXPECTED));
-	}
+        List<Pet> pets = this.petService.findByName(FIND_NAME);
 
-	/**
-	 * 
-	 */
-	@Test
-	public void testFindPetByTypeId() {
+        assertEquals(SIZE_EXPECTED, pets.size());
+    }
 
-		int TYPE_ID = 5;
-		int SIZE_EXPECTED = 2;
+    /**
+     *
+     */
+    @Test
+    public void testFindPetByTypeId() {
 
-		List<Pet> pets = petService.findByTypeId(TYPE_ID);
+        int TYPE_ID = 5;
+        int SIZE_EXPECTED = 2;
 
-		assertThat(pets.size(), is(SIZE_EXPECTED));
-	}
+        List<Pet> pets = this.petService.findByTypeId(TYPE_ID);
 
-	/**
-	 * 
-	 */
-	@Test
-	public void testFindPetByOwnerId() {
+        assertEquals(SIZE_EXPECTED, pets.size());
+    }
 
-		int OWNER_ID = 10;
-		int SIZE_EXPECTED = 2;
+    /**
+     *
+     */
+    @Test
+    public void testFindPetByOwnerId() {
 
-		List<Pet> pets = petService.findByOwnerId(OWNER_ID);
+        int OWNER_ID = 10;
+        int SIZE_EXPECTED = 2;
 
-		assertThat(pets.size(), is(SIZE_EXPECTED));
-		
-	}
+        List<Pet> pets = this.petService.findByOwnerId(OWNER_ID);
 
-	/**
-	 *  To get ID generate , you need 
-	 *  setup in id primary key in your
-	 *  entity this annotation :
-	 *  	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 */
-	@Test
-	public void testCreatePet() {
+        assertEquals(SIZE_EXPECTED, pets.size());
 
-		String PET_NAME = "Ponky";
-		int OWNER_ID = 1;
-		int TYPE_ID = 1;
+    }
 
-		Pet pet = new Pet(PET_NAME, 1, 1, null);
-		
-		Pet petCreated = petService.create(pet);
-		
-		logger.info("PET CREATED :" + petCreated);
+    /**
+     * To get ID generate , you need
+     * setup in id primary key in your
+     * entity this annotation :
+     *
+     * @GeneratedValue(strategy = GenerationType.IDENTITY)
+     */
+    @Test
+    public void testCreatePet() {
 
-		//          ACTUAL                 , EXPECTED 
-		assertThat(petCreated.getId()      , notNullValue());
-		assertThat(petCreated.getName()    , is(PET_NAME));
-		assertThat(petCreated.getOwnerId() , is(OWNER_ID));
-		assertThat(petCreated.getTypeId()  , is(TYPE_ID));
+        String PET_NAME = "Ponky";
+        int OWNER_ID = 1;
+        int TYPE_ID = 1;
 
-	}
+        Pet pet = new Pet(PET_NAME, 1, 1, null);
 
-	
-	/**
-	 * 
-	 */
-	@Test
-	public void testUpdatePet() {
+        Pet petCreated = this.petService.create(pet);
 
-		String PET_NAME = "Bear";
-		int OWNER_ID = 1;
-		int TYPE_ID = 1;
-		long create_id = -1;
+        log.info("PET CREATED :" + petCreated);
 
-		String UP_PET_NAME = "Bear2";
-		int UP_OWNER_ID = 2;
-		int UP_TYPE_ID = 2;
+        assertNotNull(pet.getId());
+        assertEquals(PET_NAME, pet.getName());
+        assertEquals(OWNER_ID, pet.getOwnerId());
+        assertEquals(TYPE_ID, pet.getTypeId());
 
-		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID, null);
+    }
 
-		// Create record
-		logger.info(">" + pet);
-		Pet petCreated = petService.create(pet);
-		logger.info(">>" + petCreated);
 
-		create_id = petCreated.getId();
+    /**
+     *
+     */
+    @Test
+    public void testUpdatePet() {
 
-		// Prepare data for update
-		petCreated.setName(UP_PET_NAME);
-		petCreated.setOwnerId(UP_OWNER_ID);
-		petCreated.setTypeId(UP_TYPE_ID);
+        String PET_NAME = "Bear";
+        int OWNER_ID = 1;
+        int TYPE_ID = 1;
 
-		// Execute update
-		Pet upgradePet = petService.update(petCreated);
-		logger.info(">>>>" + upgradePet);
+        String UP_PET_NAME = "Bear2";
+        int UP_OWNER_ID = 2;
+        int UP_TYPE_ID = 2;
 
-		//        ACTUAL       EXPECTED
-		assertThat(create_id ,notNullValue());
-		assertThat(upgradePet.getId(), is(create_id));
-		assertThat(upgradePet.getName(), is(UP_PET_NAME));
-		assertThat(upgradePet.getTypeId(), is(UP_OWNER_ID));
-		assertThat(upgradePet.getOwnerId(), is(UP_TYPE_ID));
-	}
+        Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
 
-	/**
-	 * 
-	 */
-	@Test
-	public void testDeletePet() {
+        // ------------ Create ---------------
 
-		String PET_NAME = "Bird";
-		int OWNER_ID = 1;
-		int TYPE_ID = 1;
+        log.info(">" + pet);
+        Pet petCreated = this.petService.create(pet);
+        log.info(">>" + petCreated);
 
-		Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID, null);
-		pet = petService.create(pet);
-		logger.info("" + pet);
+        // ------------ Update ---------------
 
-		try {
-			petService.delete(pet.getId());
-		} catch (PetNotFoundException e) {
-			fail(e.getMessage());
-		}
-			
-		try {
-			petService.findById(pet.getId());
-			fail("Pet id = " + pet.getId() + " has not delete");
-		} catch (PetNotFoundException e) {
-		} 				
+        // Prepare data for update
+        petCreated.setName(UP_PET_NAME);
+        petCreated.setOwnerId(UP_OWNER_ID);
+        petCreated.setTypeId(UP_TYPE_ID);
 
-	}
+        // Execute update
+        Pet upgradePet = this.petService.update(petCreated);
+        log.info(">>>>" + upgradePet);
+
+        //            EXPECTED        ACTUAL
+        assertEquals(UP_PET_NAME, upgradePet.getName());
+        assertEquals(UP_OWNER_ID, upgradePet.getTypeId());
+        assertEquals(UP_TYPE_ID, upgradePet.getOwnerId());
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void testDeletePet() {
+
+        String PET_NAME = "Bird";
+        int OWNER_ID = 1;
+        int TYPE_ID = 1;
+
+        // ------------ Create ---------------
+
+        Pet pet = new Pet(PET_NAME, OWNER_ID, TYPE_ID);
+        pet = this.petService.create(pet);
+        log.info("" + pet);
+
+        // ------------ Delete ---------------
+
+        try {
+            this.petService.delete(pet.getId());
+        } catch (PetNotFoundException e) {
+            fail(e.getMessage());
+        }
+
+        // ------------ Validation ---------------
+
+        try {
+            this.petService.findById(pet.getId());
+            assertTrue(false);
+        } catch (PetNotFoundException e) {
+            assertTrue(true);
+        }
+
+    }
 }

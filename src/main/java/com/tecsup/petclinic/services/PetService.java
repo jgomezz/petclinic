@@ -62,9 +62,8 @@ public interface PetService {
 	List<Pet> findByOwnerId(int ownerId);
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
-	Iterable<Pet> findAll();
-
+	List<Pet> findAll();
 }

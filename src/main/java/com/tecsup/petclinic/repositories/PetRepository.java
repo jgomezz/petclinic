@@ -25,4 +25,7 @@ public interface PetRepository
 	// Fetch pets by ownerId
 	List<Pet> findByOwnerId(int ownerId);
 
+	@Override
+	List<Pet> findAll();
+
 }
