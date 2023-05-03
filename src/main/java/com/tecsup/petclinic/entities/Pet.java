@@ -17,7 +17,7 @@ public class Pet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Integer id;
 	private String name;
 	@Column(name = "type_id")
 	private int typeId;
@@ -31,7 +31,7 @@ public class Pet {
 	public Pet() {
 	}
 
-	public Pet(long id, String name, int type_id, int owner_id, Date birthDate) {
+	public Pet(Integer id, String name, int type_id, int owner_id, Date birthDate) {
 		super();
 		this.id = id;
 		this.name = name;

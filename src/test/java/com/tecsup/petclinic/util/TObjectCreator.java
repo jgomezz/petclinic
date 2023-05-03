@@ -12,7 +12,7 @@ public class TObjectCreator {
 	}
 
 	public static Pet newPet() {
-		return new Pet(0L,"Punky",1,1, null);
+		return new Pet(0,"Punky",1,1, null);
 	}
 
 	public static Pet newPetCreated() {

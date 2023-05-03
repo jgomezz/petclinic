@@ -54,7 +54,7 @@ public class PetServiceImpl implements PetService {
 	 * @throws PetNotFoundException
 	 */
 	@Override
-	public void delete(Long id) throws PetNotFoundException{
+	public void delete(Integer id) throws PetNotFoundException{
 
 		Pet pet = findById(id);
 		petRepository.delete(pet);
@@ -67,7 +67,7 @@ public class PetServiceImpl implements PetService {
 	 * @return
 	 */
 	@Override
-	public Pet findById(long id) throws PetNotFoundException {
+	public Pet findById(Integer id) throws PetNotFoundException {
 
 		Optional<Pet> pet = petRepository.findById(id);
 
