@@ -28,9 +28,12 @@ logging:
     #name:/Users/mbtec22/temp/application.log
     #name:c:/temp/application.log
 
-  pattern:
+    pattern :
     # Logging pattern for the console : IT IS OK
-    # console: %d{yy-MM-dd HH:mm:ss} - %logger{36} - %msg%n
+    # console : %d{yy-MM-dd HH:mm:ss} - %logger{36} - %msg%n
+
+    # Logging pattern for file : DONT WORK, DISABLE WRITE FILE LOG
+    # file : %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
 
     # Logging pattern for file : DONT WORK, DISABLE WRITE FILE LOG
     # file:  %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
