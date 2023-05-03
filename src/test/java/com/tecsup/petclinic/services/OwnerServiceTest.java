@@ -1,13 +1,11 @@
 package com.tecsup.petclinic.services;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+@Slf4j
 public class OwnerServiceTest {
-
-	private static final Logger logger = LoggerFactory.getLogger(OwnerServiceTest.class);
 
 	//@Autowired
    //	private OwnerService ownerService;
@@ -30,7 +28,7 @@ public class OwnerServiceTest {
 		} catch (OwnertNotFoundException e) {
 			fail(e.getMessage());
 		}
-		logger.info("" + owner);
+		log.info("" + owner);
 
 		assertEquals(NAME, owner.getName());
 
