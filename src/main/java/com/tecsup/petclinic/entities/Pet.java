@@ -31,18 +31,21 @@ public class Pet {
 	public Pet() {
 	}
 
-	public Pet(long id, String name, int type_id, int owner_id) {
+	public Pet(long id, String name, int type_id, int owner_id, Date birthDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.typeId = type_id;
 		this.ownerId = owner_id;
+		this.birthDate = birthDate;
+
 	}
 
-	public Pet(String name, int type_id, int owner_id) {
+	public Pet(String name, int type_id, int owner_id, Date birthDate) {
 		super();
 		this.name = name;
 		this.typeId = type_id;
 		this.ownerId = owner_id;
+		this.birthDate = birthDate;
 	}
 }
