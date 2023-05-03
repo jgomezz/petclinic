@@ -31,14 +31,14 @@ public interface PetService {
 	 * @param id
 	 * @throws PetNotFoundException
 	 */
-	void delete(Long id) throws PetNotFoundException;
+	void delete(Integer id) throws PetNotFoundException;
 
 	/**
 	 * 
 	 * @param id
 	 * @return
 	 */
-	Pet findById(long id) throws PetNotFoundException;
+	Pet findById(Integer id) throws PetNotFoundException;
 
 	/**
 	 * 
@@ -62,9 +62,8 @@ public interface PetService {
 	List<Pet> findByOwnerId(int ownerId);
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
-	Iterable<Pet> findAll();
-
+	List<Pet> findAll();
 }
