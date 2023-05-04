@@ -1,13 +1,11 @@
-# Application PetClinic
+# Spring Boot : Application PetClinic
 
-## This application uses Spring Boot 
+## Features  
 
-## v1.0.0 --> Version with unit test
+### 1.  Unit Test  --> Tag v1.0.0
+### 2.  Integration Test  --> Tag v2.0.0
+### 3.  Load Test  --> Tag v4.0.0
 
-## v2.0.0 --> Version with integration test
-
-## v3.0.0 --> Version with continuous integration 
-
-### - mvn test -P dev  --> aplication-dev.properties 
-### - mvn test -P test --> aplication-test.properties
-### - mvn test -P prod --> aplication-prod.properties
+#### - mvn test -P dev  --> aplication-dev.properties
+#### - mvn test -P test --> aplication-test.properties
+#### - mvn test -P prod --> aplication-prod.properties

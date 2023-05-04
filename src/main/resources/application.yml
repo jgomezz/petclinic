@@ -1,0 +1,42 @@
+# ===============================
+# PROFILE
+# ===============================
+spring:
+  profiles:
+    active: @activatedProperties@
+
+# ===============================
+# = PARAMETERS
+# ===============================
+# https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.core
+
+# ===============================
+# COMMON PARAMETERS
+# ===============================
+  data:
+    rest:
+      basePath: /api
+
+# DEBUG, INFO , ERROR
+logging:
+  level:
+    root: INFO
+
+  # Output to a temp_folder/file
+  file:
+    name: /home/ubuntu/logs/application.log
+    #name:/Users/mbtec22/temp/application.log
+    #name:c:/temp/application.log
+
+    pattern :
+    # Logging pattern for the console : IT IS OK
+    # console : %d{yy-MM-dd HH:mm:ss} - %logger{36} - %msg%n
+
+    # Logging pattern for file : DONT WORK, DISABLE WRITE FILE LOG
+    # file : %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
+
+    # Logging pattern for file : DONT WORK, DISABLE WRITE FILE LOG
+    # file:  %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
+
+server:
+  port: 8080
