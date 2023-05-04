@@ -14,5 +14,6 @@
         src: target/petclinic.jar
         dest: deploy/petclinic.jar
 
+
     - name: Start Spring Boot application
       command: sudo systemctl start petclinic-api.service
