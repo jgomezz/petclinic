@@ -11,8 +11,8 @@
 
     - name: Copy JAR file to remote node
       copy:
-        src: target/petclinic-0.0.1-SNAPSHOT.jar
-        dest: deploy/petclinic-0.0.1-SNAPSHOT.jar
+        src: target/petclinic.jar
+        dest: deploy/petclinic.jar
 
     - name: Start Spring Boot application
       command: sudo systemctl start petclinic-api.service
