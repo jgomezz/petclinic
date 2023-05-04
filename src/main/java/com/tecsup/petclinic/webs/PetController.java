@@ -78,7 +78,6 @@ public class PetController {
 
 	}
 
-
 	/**
 	 * Find pet by id
 	 *
