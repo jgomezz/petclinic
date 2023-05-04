@@ -1,7 +1,6 @@
-# Application PetClinic
+# Spring Boot : Application PetClinic
 
-## This application uses Spring Boot 
+## Features  
 
-## v1.0.0 --> Version with unit test
-
-## v2.0.0 --> Version with integration test 
+### 1.  Unit Test  --> Tag v1.0.0
+### 2.  Integration Test  --> Tag v2.0.0
