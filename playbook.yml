@@ -1,0 +1,23 @@
+---
+- hosts: webservers
+  become: yes
+  remote_user: ubuntu
+
+  tasks:
+
+    - name: Stop Spring Boot application
+ #      command: sudo systemctl stop productos-api.service
+ #     command: pkill -f java
+
+    - name: Copy JAR file to remote node
+      copy:
+        src: target/petclinic-0.0.1-SNAPSHOT.jar
+        dest: deploy/petclinic-0.0.1-SNAPSHOT.jar
+
+    - name: Start Spring Boot application
+ #     command: sudo systemctl start productos-api.service
+
+    #  command: java -jar deploy/product-micro-1.0.0-SNAPSHOT.jar
+    #  become: yes
+    #  become_user: ubuntu
+    #

@@ -27,5 +27,18 @@ pipeline {
                             }
                         }
                    }
+                   stage('Build Jars') {
+                       steps {
+                           echo "Building jar...!"
+                           sh 'mvn clean package'
+                       }
+                   }
+                   stage("Deploy with Ansible") {
+                        steps {
+                          echo "Ansible Playbook......!"
+                          sh "ansible-playbook playbook.yml -i inventory.ini --private-key  /var/lib/jenkins/credentials/keywebJG.pem"
+                        }
+                   }
+
          }
 }

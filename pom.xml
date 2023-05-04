@@ -11,7 +11,7 @@
 	<groupId>com.tecsup</groupId>
 	<artifactId>petclinic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PetClinic</name>
+	<name>petclinic</name>
 	<description>PetClinic project for Spring Boot</description>
 
 	<properties>
