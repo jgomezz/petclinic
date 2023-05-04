@@ -17,7 +17,7 @@ pipeline {
                    stage('Test') {
                         steps {
                             echo "Running tests"
-                            sh "mvn clean test"
+                            sh "mvn clean test -P h2"
                         }
                    }
                    stage('SonarQube Analysis') {
