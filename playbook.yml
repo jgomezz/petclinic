@@ -16,8 +16,3 @@
 
     - name: Start Spring Boot application
       command: sudo systemctl start petclinic-api.service
-
-    #  command: java -jar deploy/product-micro-1.0.0-SNAPSHOT.jar
-    #  become: yes
-    #  become_user: ubuntu
-    #
