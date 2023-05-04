@@ -6,7 +6,7 @@
   tasks:
 
     - name: Stop Spring Boot application
- #      command: sudo systemctl stop productos-api.service
+      command: sudo systemctl stop petclnic-api.service
  #     command: pkill -f java
 
     - name: Copy JAR file to remote node
@@ -15,7 +15,7 @@
         dest: deploy/petclinic-0.0.1-SNAPSHOT.jar
 
     - name: Start Spring Boot application
- #     command: sudo systemctl start productos-api.service
+      command: sudo systemctl start petclnic-api.service
 
     #  command: java -jar deploy/product-micro-1.0.0-SNAPSHOT.jar
     #  become: yes
