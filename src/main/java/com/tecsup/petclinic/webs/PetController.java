@@ -60,7 +60,6 @@ public class PetController {
 
 	}
 
-
 	/**
 	 * Create pet
 	 *
