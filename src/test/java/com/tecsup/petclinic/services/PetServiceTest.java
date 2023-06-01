@@ -106,10 +106,10 @@ public class PetServiceTest {
 
         log.info("PET CREATED :" + petCreated);
 
-        assertNotNull(pet.getId());
-        assertEquals(PET_NAME, pet.getName());
-        assertEquals(OWNER_ID, pet.getOwnerId());
-        assertEquals(TYPE_ID, pet.getTypeId());
+        assertNotNull(petCreated.getId());
+        assertEquals(PET_NAME, petCreated.getName());
+        assertEquals(OWNER_ID, petCreated.getOwnerId());
+        assertEquals(TYPE_ID, petCreated.getTypeId());
 
     }
 
