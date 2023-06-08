@@ -49,12 +49,12 @@ public class PetController {
 	public ResponseEntity<List<PetTO>> findAllPets() {
 
 		List<Pet> pets = (List<Pet>) petService.findAll();
-		//log.info("pets: " + pets);
-		//pets.forEach(item -> log.info("Pet >>  {} ", item));
+		log.info("pets: " + pets);
+		pets.forEach(item -> log.info("Pet >>  {} ", item));
 
 		List<PetTO> petsTO = this.mapper.toPetTOList(pets);
-		//log.info("petsTO: " + petsTO);
-		//petsTO.forEach(item -> log.info("PetTO >>  {} ", item));
+		log.info("petsTO: " + petsTO);
+		petsTO.forEach(item -> log.info("PetTO >>  {} ", item));
 
 		return ResponseEntity.ok(petsTO);
 
