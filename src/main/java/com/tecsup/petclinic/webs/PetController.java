@@ -18,6 +18,7 @@ import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
 import com.tecsup.petclinic.services.PetService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,6 +56,9 @@ public class PetController {
 		List<PetTO> petsTO = this.mapper.toPetTOList(pets);
 		log.info("petsTO: " + petsTO);
 		//petsTO.forEach(item -> log.info("PetTO >>  {} ", item));
+
+		petsTO = new ArrayList<>();
+
 
 		return ResponseEntity.ok(petsTO);
 
