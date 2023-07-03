@@ -57,7 +57,7 @@ public class PetController {
 		log.info("petsTO: " + petsTO);
 		//petsTO.forEach(item -> log.info("PetTO >>  {} ", item));
 
-		petsTO = new ArrayList<>();
+		//petsTO = new ArrayList<>();
 
 
 		return ResponseEntity.ok(petsTO);
