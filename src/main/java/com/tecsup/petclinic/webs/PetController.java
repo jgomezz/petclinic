@@ -44,7 +44,7 @@ public class PetController {
 	/**
 	 * Get all pets
 	 *
-	 * @return
+	 * @return Change
 	 */
 	@GetMapping(value = "/pets")
 	public ResponseEntity<List<PetTO>> findAllPets() {
