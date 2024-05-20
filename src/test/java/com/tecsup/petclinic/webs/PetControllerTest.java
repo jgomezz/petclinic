@@ -35,13 +35,15 @@ public class PetControllerTest {
 
 		//int NRO_RECORD = 73;
 		int ID_FIRST_RECORD = 1;
+		String NAME_FIRST_RECORD = "Leo";
 
 		this.mockMvc.perform(get("/pets"))
 				.andExpect(status().isOk())
 				.andExpect(content()
 						.contentType(MediaType.APPLICATION_JSON_VALUE))
 				//		    .andExpect(jsonPath("$", hasSize(NRO_RECORD)))
-				.andExpect(jsonPath("$[0].id", is(ID_FIRST_RECORD)));
+				.andExpect(jsonPath("$[0].id", is(ID_FIRST_RECORD)))
+				.andExpect(jsonPath("$[0].name", is(NAME_FIRST_RECORD)));
 	}
 	
 
