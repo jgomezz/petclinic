@@ -4,7 +4,7 @@
 
 ### 1.  Unit Test  --> Tag v1.0.1
 ### 2.  Integration Test  --> Tag v2.0.1
-### 3.  Load Test  --> Tag v4.0.1
+### 3.  Load Test  --> Tag v3.0.1
 
 #### - mvn test -P local --> aplication-local.properties
 #### - mvn test -P dev   --> aplication-dev.properties
