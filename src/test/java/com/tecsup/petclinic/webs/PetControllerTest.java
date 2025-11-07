@@ -25,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Slf4j
 public class PetControllerTest {
 
+    // Object Mapper
     private static final ObjectMapper om = new ObjectMapper();
 
 	@Autowired
