@@ -12,7 +12,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo '📥 Getting code...'
+                echo ' Getting code...'
                 checkout scm
             }
         }
@@ -26,14 +26,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo '🧪 Testing...'
+                echo ' Testing...'
                 sh 'mvn test'
             }
         }
 
         stage('Package') {
             steps {
-                echo '📦 Creating JAR...'
+                echo ' Creating JAR...'
                 sh 'mvn package -DskipTests'
             }
         }
