@@ -22,7 +22,7 @@ public class PetServiceTest {
     @Test
     public void testFindPetById() {
 
-        String NAME_EXPECTED = "Leo";
+        String NAME_EXPECTED = "Leo2";
 
         Integer ID = 1;
 
